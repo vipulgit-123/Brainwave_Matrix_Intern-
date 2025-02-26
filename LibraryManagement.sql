@@ -46,7 +46,7 @@ CREATE TABLE Books (
     FOREIGN KEY (publisher_id) REFERENCES Publishers(publisher_id) ON DELETE SET NULL
 );
 
--- Book_Authors Table: many-to-many relationship
+-- Book_Authors Table
 CREATE TABLE Book_Authors (
     book_id INT,
     author_id INT,
@@ -122,7 +122,7 @@ INSERT INTO Books (title, isbn, category_id, publisher_id, available_copies, tot
 ('A Brief History of Time', '9780553380163', 2, 1, 4, 4),
 ('Clean Code', '9780132350884', 3, 2, 2, 2);
 
--- 3.6. Link Books with Authors (Many-to-Many)
+-- 3.6. Link Books with Authors
 -- Harry Potter by J.K. Rowling
 INSERT INTO Book_Authors (book_id, author_id) VALUES (1, 1);
 -- 1984 by George Orwell
@@ -131,7 +131,7 @@ INSERT INTO Book_Authors (book_id, author_id) VALUES (2, 2);
 -- For example:
 -- INSERT INTO Book_Authors (book_id, author_id) VALUES (3, 1); -- if appropriate
 
--- 3.7. Create a sample Transaction (Borrowing a Book)
+-- 3.7. Create a sample Transaction
 -- Let's say student 'Alice Johnson' (user_id = 1) borrows '1984' (book_id = 2)
 INSERT INTO Transactions (user_id, book_id, due_date) 
 VALUES (1, 2, DATE_ADD(CURDATE(), INTERVAL 14 DAY));
