@@ -122,22 +122,17 @@ INSERT INTO Books (title, isbn, category_id, publisher_id, available_copies, tot
 ('A Brief History of Time', '9780553380163', 2, 1, 4, 4),
 ('Clean Code', '9780132350884', 3, 2, 2, 2);
 
--- 3.6. Link Books with Authors
--- Harry Potter by J.K. Rowling
+
 INSERT INTO Book_Authors (book_id, author_id) VALUES (1, 1);
--- 1984 by George Orwell
 INSERT INTO Book_Authors (book_id, author_id) VALUES (2, 2);
--- For the other books, you can link as needed (here left without authors for demonstration)
--- For example:
--- INSERT INTO Book_Authors (book_id, author_id) VALUES (3, 1); -- if appropriate
+
 
 -- 3.7. Create a sample Transaction
--- Let's say student 'Alice Johnson' (user_id = 1) borrows '1984' (book_id = 2)
 INSERT INTO Transactions (user_id, book_id, due_date) 
 VALUES (1, 2, DATE_ADD(CURDATE(), INTERVAL 14 DAY));
 
 -- 3.8. Create a Reservation
--- Let student 'Bob Smith' (user_id = 2) reserve 'Clean Code' (book_id = 4)
+
 INSERT INTO Reservations (user_id, book_id) VALUES (2, 4);
 
 SELECT * FROM Users;
